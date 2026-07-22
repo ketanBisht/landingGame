@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+  --color-primary: #b4ff5c; /* The lime green from the image */
+  --font-sans: var(--font-space-grotesk), sans-serif;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground: #000000;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Neo-Brutalist Utilities */
+
+.brutal-border {
+  border: 2px solid #000000;
+}
+
+.brutal-shadow {
+  box-shadow: 0px 6px 0px 0px #000000;
+}
+
+.brutal-card {
+  border: 1px solid #000000;
+  box-shadow: 0px 5px 0px 0px #000000;
+  border-radius: 24px; /* Rounded corners as seen in the reference */
+  background-color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.brutal-card:hover {
+  transform: translateY(2px);
+  box-shadow: 0px 3px 0px 0px #000000;
+}
+
+.brutal-card-black {
+  background-color: #171717; /* Very dark gray/black */
+  color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0px 5px 0px 0px rgba(0,0,0,0.1); /* Subtle shadow for dark cards */
+  border: 1px solid #171717;
+  transition: all 0.2s ease-in-out;
+}
+
+.brutal-card-black:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 0px 0px rgba(0,0,0,0.2);
+}
+
+.brutal-btn-primary {
+  background-color: #171717;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid #171717;
+}
+
+.brutal-btn-primary:hover {
+  background-color: #333333;
+}
+
+.brutal-btn-outline {
+  background-color: transparent;
+  color: #171717;
+  border: 1px solid #171717;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.brutal-btn-outline:hover {
+  background-color: #f3f4f6;
+}
+
+.highlight-bg {
+  background-color: #b4ff5c;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
 }
