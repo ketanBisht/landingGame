@@ -2,7 +2,20 @@
 
 import React from 'react';
 
+const gameUrls = [
+  "https://mazecursor.vercel.app/",
+  "https://curiousmuseum.vercel.app/",
+  "https://offcolor.vercel.app/games/offcolor",
+  "https://matchitt.vercel.app/",
+  "https://unfairwiki.vercel.app/"
+];
+
 export default function CTASection() {
+  const handleRandomPlay = () => {
+    const randomUrl = gameUrls[Math.floor(Math.random() * gameUrls.length)];
+    window.open(randomUrl, "_blank");
+  };
+
   return (
     <section className="w-full max-w-7xl mx-auto px-6 py-12 mb-16">
       <div className="bg-[#f3f4f6] rounded-[32px] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
@@ -10,12 +23,15 @@ export default function CTASection() {
         {/* Left text content */}
         <div className="z-10 max-w-lg">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Let's make things happen
+            Ready to dive in?
           </h2>
           <p className="text-gray-700 text-lg mb-8">
-            Contact us today to learn more about how our game portal can help you pass the time and succeed in having fun online.
+            Choose from our curated collection of premium web games or let fate decide what you play next.
           </p>
-          <button className="brutal-btn-primary">
+          <button 
+            onClick={handleRandomPlay}
+            className="brutal-btn-primary cursor-pointer hover:bg-[#b4ff5c] hover:text-black transition-all"
+          >
             Play a random game
           </button>
         </div>

@@ -14,9 +14,11 @@ export default function HeroSection() {
         <p className="text-lg md:text-xl text-gray-700 max-w-lg mt-2">
           Our platform helps you easily discover, play, and linger on addictive web games designed to make passing time incredibly enjoyable.
         </p>
-        <button className="brutal-btn-primary mt-4 text-lg px-8 py-4">
-          Browse games
-        </button>
+        <a href="#games">
+          <button className="brutal-btn-primary mt-4 text-lg px-8 py-4 cursor-pointer hover:bg-[#b4ff5c] hover:text-black hover:border-black transition-all">
+            Browse games
+          </button>
+        </a>
       </div>
 
       {/* Right side illustration (Gamepad abstract) */}

@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 
 export interface Game {
   id: string;
@@ -8,6 +9,7 @@ export interface Game {
   description: string;
   tags: string[];
   url: string;
+  imageUrl?: string;
 }
 
 interface GameCardProps {
@@ -19,54 +21,54 @@ export default function GameCard({ game, variant }: GameCardProps) {
   const isDark = variant === "dark";
 
   return (
-    <div className={`p-8 h-64 flex justify-between ${isDark ? 'brutal-card-black' : 'brutal-card'} group relative overflow-hidden`}>
+    <div className={`p-0 h-80 flex flex-col justify-end ${isDark ? 'brutal-card-black' : 'brutal-card'} group relative overflow-hidden cursor-pointer`}>
+      {/* Background Image */}
+      {game.imageUrl ? (
+        <Image 
+          src={game.imageUrl} 
+          alt={game.title} 
+          fill
+          className="object-cover absolute inset-0 z-0 group-hover:scale-105 transition-transform duration-700 ease-in-out" 
+        />
+      ) : (
+        <div className="absolute inset-0 z-0 bg-gray-900 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+            <div className="w-full h-full opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent" />
+        </div>
+      )}
       
-      {/* Left side content */}
-      <div className="flex flex-col justify-between h-full w-1/2 z-10">
-        <div>
-          {isDark ? (
-            <h3 className="text-xl md:text-2xl font-bold bg-white text-black inline-block px-2 py-1 rounded">
-              {game.title}
-            </h3>
-          ) : (
-            <h3 className="text-xl md:text-2xl font-bold bg-[#b4ff5c] inline-block px-2 py-1 rounded">
-              {game.title}
-            </h3>
-          )}
+      {/* Gradient Overlay for Text Readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent z-10 transition-opacity duration-300" />
+
+      {/* Content */}
+      <div className="relative z-20 p-6 md:p-8 flex flex-col justify-end h-full">
+        <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 ease-out">
+          <div className="flex gap-2 mb-3 flex-wrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+            {game.tags.map(tag => (
+              <span key={tag} className="text-[10px] font-bold px-2 py-1 bg-white/20 backdrop-blur-md border border-white/10 text-white rounded-md uppercase tracking-widest">
+                {tag}
+              </span>
+            ))}
+          </div>
+          <h3 className="text-3xl font-black text-white mb-2 tracking-tight drop-shadow-md">
+            {game.title}
+          </h3>
+          <p className="text-gray-300 text-sm md:text-base mb-6 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150 max-w-sm">
+            {game.description}
+          </p>
         </div>
         
         <a 
           href={game.url}
-          className="flex items-center gap-4 mt-auto group-hover:translate-x-2 transition-transform w-max"
+          className="flex items-center gap-3 mt-auto group-hover:translate-x-2 transition-transform w-max opacity-100 relative z-30"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>
-            <span className="font-bold text-lg rotate-45">↗</span>
+          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#b4ff5c] text-black shadow-[0_0_15px_rgba(180,255,92,0.4)]">
+            <span className="font-bold text-xl rotate-45 group-hover:rotate-0 transition-transform duration-300">↗</span>
           </div>
-          <span className="font-medium">Play now</span>
+          <span className="font-bold text-white tracking-widest uppercase text-xs">Play Now</span>
         </a>
       </div>
-      
-      {/* Right side illustration (abstract representations) */}
-      <div className="w-1/2 flex items-center justify-end relative z-0">
-        {/* We can do a minimal CSS illustration based on the variant */}
-        {isDark ? (
-          <div className="w-24 h-24 brutal-border bg-black rounded-lg flex items-center justify-center relative shadow-sm border-white">
-             {/* A retro smile face or abstract shape */}
-             <div className="w-16 h-16 bg-white rounded-md flex items-center justify-center relative">
-               <div className="absolute top-4 left-3 w-3 h-3 bg-black rounded-full" />
-               <div className="absolute top-4 right-3 w-3 h-3 bg-black rounded-full" />
-               <div className="absolute bottom-3 w-8 h-2 bg-black rounded-full" />
-             </div>
-          </div>
-        ) : (
-          <div className="w-24 h-24 border-2 border-black rounded-full flex items-center justify-center relative border-dashed animate-[spin_20s_linear_infinite]">
-             <div className="w-12 h-12 border-2 border-black rounded flex items-center justify-center bg-[#b4ff5c]">
-               <div className="w-4 h-4 bg-black rounded-full" />
-             </div>
-          </div>
-        )}
-      </div>
-
     </div>
   );
 }
