@@ -9,7 +9,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "GameLand",
+  title: "Ctrl+Play | The Web Arcade",
   description: "Play fun web games to pass the time.",
 };
 

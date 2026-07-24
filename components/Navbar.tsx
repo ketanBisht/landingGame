@@ -28,7 +28,7 @@ export default function Navbar() {
           <div className="bg-black rounded-sm"></div>
           <div className="bg-black rounded-sm group-hover:bg-[#b4ff5c] transition-colors"></div>
         </div>
-        <span className="font-bold text-2xl tracking-tight">GameLand</span>
+        <span className="font-bold text-2xl tracking-tight">Ctrl+Play</span>
       </Link>
 
       {/* Links (Hidden on very small screens for simplicity) */}
