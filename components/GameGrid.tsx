@@ -5,6 +5,14 @@ import GameCard, { Game } from './GameCard';
 
 const MOCK_GAMES: Game[] = [
   {
+    id: "tomriddle",
+    title: "Tom Riddle's Diary",
+    description: "An interactive, atmospheric web simulation of Tom Riddle's diary from Harry Potter. Type or draw on the aged parchment pages, see the ink absorb, and converse with the dark memory within.",
+    tags: ["Simulation", "Interactive", "Atmospheric"],
+    url: "https://tom-riddle.vercel.app/",
+    imageUrl: "/images/tom_riddle_diary.png"
+  },
+  {
     id: "mazecursor",
     title: "The Invisible Maze",
     description: "A fast-paced, memory-based speedrun gauntlet. Memory. Speed. Survival. Can you hack the system without hitting invisible walls?",

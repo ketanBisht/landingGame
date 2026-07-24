@@ -8,7 +8,8 @@ const gameUrls = [
   "https://curiousmuseum.vercel.app/",
   "https://offcolor.vercel.app/games/offcolor",
   "https://matchitt.vercel.app/",
-  "https://unfairwiki.vercel.app/"
+  "https://unfairwiki.vercel.app/",
+  "https://tom-riddle.vercel.app/"
 ];
 
 export default function Navbar() {
